@@ -1,0 +1,60 @@
+ЗАДАЧА 1:
+
+for i in range(1, 101):
+    if i % 3 == 0 and i % 5 == 0:
+        print("FizzBuzz")
+    elif i % 3 == 0:
+        print("Fizz")
+    elif i % 5 == 0:
+        print("Buzz")
+    else:
+        print(i)
+
+
+ЗАДАЧА 2:
+
+a = [1, 4, 6]
+b = [11, 33, 22]
+
+a_sorted = sorted(a, key=lambda x: b[a.index(x)], reverse=False)
+
+print(a_sorted)
+
+
+ЗАДАЧА 3:
+strings = ['praktika', 'mediasoft', 'kei']
+char_sets = [set(string) for string in strings]
+common_chars = set.intersection(*char_sets)
+result = ''.join(sorted(common_chars))
+print(result)
+
+
+ЗАДАЧА 4:
+costs = {
+    'I': 1,
+    'V': 5,
+    'X': 10,
+    'L': 50,
+    'C': 100,
+    'D': 500,
+    'M': 1000
+}
+
+def roman_to_int(s: str) -> int:
+    total_sum = 0
+
+    for l, r in zip(s, s[1:]):
+        if costs[l] < costs[r]:
+            total_sum -= costs[l]
+        else:
+            total_sum += costs[l]
+
+    total_sum += costs[s[-1]] 
+    return total_sum
+
+
+print(roman_to_int('VII'))  
+print(roman_to_int('DCCCLXVIII'))  
+print(roman_to_int('MDCCLXIII'))  
+print(roman_to_int('MMXXIII'))  
+
